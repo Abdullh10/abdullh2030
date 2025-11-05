@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل سلوك الطلاب - لوحة التحكم التربوية</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2ecc71;
+            --secondary-dark: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .initiative-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            background: white;
+            color: var(--primary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .student-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .student-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .student-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .student-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .chart-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            border-right: 4px solid var(--primary);
+            padding-right: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .improvement {
+            color: var(--secondary);
+        }
+        
+        .regression {
+            color: var(--danger);
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-charts {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--gray);
+            border-top: 1px solid #eee;
+        }
+        
+        .summary {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            border-right: 4px solid var(--primary);
+            padding-right: 10px;
+        }
+        
+        .summary-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 3px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>تحليل سلوك الطلاب - لوحة التحكم التربوية</h1>
+                    <p class="subtitle">مقارنة أداء الطلاب قبل وبعد تطبيق البرنامج التربوي</p>
+                    <div class="initiative-info">
+                        <strong>المبادرة:</strong> همام | 
+                        <strong>المرشد الطلابي:</strong> منصور حامضي | 
+                        <strong>المعلم:</strong> عبدالله حمدي
+                    </div>
+                </div>
+                <div class="logo-container">
+                    <div class="logo">ت</div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: bold; font-size: 1.2rem;">مبادرة همام</div>
+                        <div style="font-size: 0.9rem;">لتحسين السلوك الطلابي</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="summary">
+            <h2 class="summary-title">ملخص النتائج</h2>
+            <div class="summary-content">
+                <div class="summary-item">
+                    <strong>الطلاب المستفيدون:</strong> 11 طالب
+                </div>
+                <div class="summary-item">
+                    <strong>مدة المبادرة:</strong> فصل دراسي
+                </div>
+                <div class="summary-item">
+                    <strong>نسبة التحسن العام:</strong> 85%
+                </div>
+                <div class="summary-item">
+                    <strong>أكثر مجال تحسناً:</strong> العمل بجد
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="student-selector" id="studentSelector">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid">
+            <!-- سيتم ملؤها بالجافاسكريبت -->
+        </div>
+        
+        <div class="chart-container">
+            <h2 class="chart-title">الرسم البياني التفصيلي للطالب: <span id="currentStudent">A</span></h2>
+            <canvas id="studentChart"></canvas>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #3498db;"></div>
+                    <span>قبل</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #2ecc71;"></div>
+                    <span>بعد</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-charts">
+            <div class="chart-container">
+                <h2 class="chart-title">مقارنة أداء جميع الطلاب في التفاعل الصفي</h2>
+                <canvas id="interactionChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2 class="chart-title">مقارنة أداء جميع الطلاب في العمل بجد</h2>
+                <canvas id="effortChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h2 class="chart-title">مقارنة أداء جميع الطلاب في السلوكيات السلبية</h2>
+            <canvas id="negativeChart"></canvas>
+        </div>
+        
+        <footer>
+            <p>© 2023 - نظام تحليل السلوك الطلابي | مبادرة "همام" تحت إشراف المرشد الطلابي منصور حامضي والمعلم عبدالله حمدي</p>
+        </footer>
+    </div>
+
+    <script>
+        // بيانات الطلاب
+        const studentData = {
+            'A': { 
+                before: { interaction: 1, participation: 1, effort: 1, sleep: 3, disruption: 5, nonInteraction: 6 },
+                after: { interaction: 3, participation: 2, effort: 4, sleep: 1, disruption: 2, nonInteraction: 1 }
+            },
+            'B': { 
+                before: { interaction: 1, participation: 2, effort: 2, sleep: 2, disruption: 3, nonInteraction: 4 },
+                after: { interaction: 2, participation: 4, effort: 4, sleep: 0, disruption: 0, nonInteraction: 1 }
+            },
+            'C': { 
+                before: { interaction: 1, participation: 1, effort: 1, sleep: 1, disruption: 5, nonInteraction: 2 },
+                after: { interaction: 3, participation: 4, effort: 5, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'D': { 
+                before: { interaction: 0, participation: 1, effort: 0, sleep: 2, disruption: 5, nonInteraction: 3 },
+                after: { interaction: 3, participation: 5, effort: 6, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'F': { 
+                before: { interaction: 0, participation: 1, effort: 0, sleep: 2, disruption: 4, nonInteraction: 2 },
+                after: { interaction: 3, participation: 4, effort: 4, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'G': { 
+                before: { interaction: 1, participation: 1, effort: 0, sleep: 1, disruption: 4, nonInteraction: 3 },
+                after: { interaction: 2, participation: 3, effort: 5, sleep: 0, disruption: 2, nonInteraction: 0 }
+            },
+            'K': { 
+                before: { interaction: 1, participation: 1, effort: 0, sleep: 1, disruption: 6, nonInteraction: 4 },
+                after: { interaction: 4, participation: 4, effort: 6, sleep: 0, disruption: 2, nonInteraction: 1 }
+            },
+            'L': { 
+                before: { interaction: 1, participation: 0, effort: 0, sleep: 2, disruption: 5, nonInteraction: 3 },
+                after: { interaction: 5, participation: 3, effort: 6, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'M': { 
+                before: { interaction: 0, participation: 1, effort: 0, sleep: 0, disruption: 4, nonInteraction: 1 },
+                after: { interaction: 4, participation: 4, effort: 5, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'N': { 
+                before: { interaction: 0, participation: 1, effort: 0, sleep: 1, disruption: 5, nonInteraction: 2 },
+                after: { interaction: 5, participation: 4, effort: 4, sleep: 0, disruption: 1, nonInteraction: 0 }
+            },
+            'O': { 
+                before: { interaction: 0, participation: 1, effort: 0, sleep: 1, disruption: 4, nonInteraction: 3 },
+                after: { interaction: 2, participation: 3, effort: 5, sleep: 0, disruption: 0, nonInteraction: 0 }
+            }
+        };
+
+        // إنشاء أزرار اختيار الطلاب
+        const studentSelector = document.getElementById('studentSelector');
+        Object.keys(studentData).forEach(student => {
+            const button = document.createElement('button');
+            button.className = 'student-btn';
+            button.textContent = `الطالب ${student}`;
+            button.dataset.student = student;
+            button.addEventListener('click', () => selectStudent(student));
+            studentSelector.appendChild(button);
+        });
+
+        // تحديد الطالب الأول افتراضياً
+        let currentStudent = 'A';
+        document.querySelector(`[data-student="${currentStudent}"]`).classList.add('active');
+        
+        // إنشاء الرسوم البيانية
+        let studentChart, interactionChart, effortChart, negativeChart;
+        
+        function initCharts() {
+            // الرسم البياني للطالب المحدد
+            const ctx1 = document.getElementById('studentChart').getContext('2d');
+            studentChart = new Chart(ctx1, {
+                type: 'bar',
+                data: getStudentChartData(currentStudent),
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'مقارنة أداء الطالب قبل وبعد - مبادرة همام'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 6,
+                            title: {
+                                display: true,
+                                text: 'التقييم (من 0 إلى 6)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // رسم بياني لمقارنة التفاعل الصفي لجميع الطلاب
+            const ctx2 = document.getElementById('interactionChart').getContext('2d');
+            interactionChart = new Chart(ctx2, {
+                type: 'bar',
+                data: getAllStudentsComparisonData('interaction'),
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'مقارنة التفاعل الصفي لجميع الطلاب - مبادرة همام'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 6,
+                            title: {
+                                display: true,
+                                text: 'التقييم (من 0 إلى 6)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // رسم بياني لمقارنة العمل بجد لجميع الطلاب
+            const ctx3 = document.getElementById('effortChart').getContext('2d');
+            effortChart = new Chart(ctx3, {
+                type: 'bar',
+                data: getAllStudentsComparisonData('effort'),
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'مقارنة العمل بجد لجميع الطلاب - مبادرة همام'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 6,
+                            title: {
+                                display: true,
+                                text: 'التقييم (من 0 إلى 6)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // رسم بياني لمقارنة السلوكيات السلبية لجميع الطلاب
+            const ctx4 = document.getElementById('negativeChart').getContext('2d');
+            negativeChart = new Chart(ctx4, {
+                type: 'bar',
+                data: getAllStudentsNegativeData(),
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'مقارنة السلوكيات السلبية لجميع الطلاب - مبادرة همام'
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 18,
+                            title: {
+                                display: true,
+                                text: 'مجموع السلبيات'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            updateStatsGrid(currentStudent);
+        }
+        
+        function getStudentChartData(student) {
+            const data = studentData[student];
+            return {
+                labels: ['التفاعل الصفي', 'المشاركة الفاعلة', 'العمل بجد', 'النوم', 'قطع سير الحصة', 'عدم التفاعل'],
+                datasets: [
+                    {
+                        label: 'قبل',
+                        data: [
+                            data.before.interaction,
+                            data.before.participation,
+                            data.before.effort,
+                            data.before.sleep,
+                            data.before.disruption,
+                            data.before.nonInteraction
+                        ],
+                        backgroundColor: '#3498db'
+                    },
+                    {
+                        label: 'بعد',
+                        data: [
+                            data.after.interaction,
+                            data.after.participation,
+                            data.after.effort,
+                            data.after.sleep,
+                            data.after.disruption,
+                            data.after.nonInteraction
+                        ],
+                        backgroundColor: '#2ecc71'
+                    }
+                ]
+            };
+        }
+        
+        function getAllStudentsComparisonData(metric) {
+            const students = Object.keys(studentData);
+            const beforeData = students.map(student => studentData[student].before[metric]);
+            const afterData = students.map(student => studentData[student].after[metric]);
+            
+            return {
+                labels: students.map(s => `الطالب ${s}`),
+                datasets: [
+                    {
+                        label: 'قبل',
+                        data: beforeData,
+                        backgroundColor: '#3498db'
+                    },
+                    {
+                        label: 'بعد',
+                        data: afterData,
+                        backgroundColor: '#2ecc71'
+                    }
+                ]
+            };
+        }
+        
+        function getAllStudentsNegativeData() {
+            const students = Object.keys(studentData);
+            const beforeData = students.map(student => 
+                studentData[student].before.sleep + 
+                studentData[student].before.disruption + 
+                studentData[student].before.nonInteraction
+            );
+            const afterData = students.map(student => 
+                studentData[student].after.sleep + 
+                studentData[student].after.disruption + 
+                studentData[student].after.nonInteraction
+            );
+            
+            return {
+                labels: students.map(s => `الطالب ${s}`),
+                datasets: [
+                    {
+                        label: 'مجموع السلبيات قبل',
+                        data: beforeData,
+                        backgroundColor: '#e74c3c'
+                    },
+                    {
+                        label: 'مجموع السلبيات بعد',
+                        data: afterData,
+                        backgroundColor: '#f39c12'
+                    }
+                ]
+            };
+        }
+        
+        function selectStudent(student) {
+            currentStudent = student;
+            document.getElementById('currentStudent').textContent = student;
+            
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.student-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-student="${student}"]`).classList.add('active');
+            
+            // تحديث الرسوم البيانية
+            studentChart.data = getStudentChartData(student);
+            studentChart.update();
+            
+            // تحديث الإحصائيات
+            updateStatsGrid(student);
+        }
+        
+        function updateStatsGrid(student) {
+            const data = studentData[student];
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = '';
+            
+            // حساب التحسن في كل مجال
+            const interactionImprovement = data.after.interaction - data.before.interaction;
+            const participationImprovement = data.after.participation - data.before.participation;
+            const effortImprovement = data.after.effort - data.before.effort;
+            const sleepImprovement = data.before.sleep - data.after.sleep; // انخفاض جيد
+            const disruptionImprovement = data.before.disruption - data.after.disruption; // انخفاض جيد
+            const nonInteractionImprovement = data.before.nonInteraction - data.after.nonInteraction; // انخفاض جيد
+            
+            // إجمالي التحسن
+            const totalImprovement = interactionImprovement + participationImprovement + effortImprovement + 
+                                   sleepImprovement + disruptionImprovement + nonInteractionImprovement;
+            
+            // إنشاء بطاقات الإحصائيات
+            const stats = [
+                { title: 'التحسن في التفاعل الصفي', value: interactionImprovement, type: 'improvement' },
+                { title: 'التحسن في المشاركة الفاعلة', value: participationImprovement, type: 'improvement' },
+                { title: 'التحسن في العمل بجد', value: effortImprovement, type: 'improvement' },
+                { title: 'انخفاض النوم في الصف', value: sleepImprovement, type: 'improvement' },
+                { title: 'انخفاض قطع سير الحصة', value: disruptionImprovement, type: 'improvement' },
+                { title: 'انخفاض عدم التفاعل', value: nonInteractionImprovement, type: 'improvement' },
+                { title: 'إجمالي التحسن', value: totalImprovement, type: 'improvement', highlight: true }
+            ];
+            
+            stats.forEach(stat => {
+                const card = document.createElement('div');
+                card.className = 'stat-card';
+                
+                const valueClass = stat.value >= 0 ? 'improvement' : 'regression';
+                const sign = stat.value > 0 ? '+' : '';
+                
+                card.innerHTML = `
+                    <h3>${stat.title}</h3>
+                    <div class="stat-value ${valueClass} ${stat.highlight ? 'highlight' : ''}">${sign}${stat.value}</div>
+                    <p>${getImprovementText(stat.value)}</p>
+                `;
+                
+                statsGrid.appendChild(card);
+            });
+        }
+        
+        function getImprovementText(value) {
+            if (value > 5) return 'تحسن مذهل! ✨';
+            if (value > 3) return 'تحسن كبير ⬆️';
+            if (value > 1) return 'تحسن جيد 👍';
+            if (value > 0) return 'تحسن طفيف ↖️';
+            if (value === 0) return 'لا تغيير ➡️';
+            if (value > -2) return 'تراجع طفيف ↙️';
+            return 'تراجع ملحوظ ⬇️';
+        }
+        
+        // تهيئة الرسوم البيانية عند تحميل الصفحة
+        window.onload = initCharts;
+    </script>
+</body>
+</html>
