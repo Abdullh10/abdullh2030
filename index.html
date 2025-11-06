@@ -877,7 +877,123 @@
                     
                     <!-- نموذج إضافة طالب جديد -->
                     <div class="add-student-form" id="add-student-form" style="display: none;">
-                        <!-- ... (نفس محتوى النموذج السابق) ... -->
+                        <h4 class="mb-4">إضافة طالب جديد</h4>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">اسم الطالب:</label>
+                                    <input type="text" class="form-control" id="new-student-name" placeholder="أدخل اسم الطالب">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">الصف:</label>
+                                    <input type="text" class="form-control" value="الأول الثانوي" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h5 class="form-section-title">النقاط الإيجابية (قبل)</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">التفاعل الصفي:</label>
+                                        <input type="number" class="form-control" id="before-interaction" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">المشاركة الفاعلة:</label>
+                                        <input type="number" class="form-control" id="before-participation" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">العمل بجد:</label>
+                                        <input type="number" class="form-control" id="before-hardWork" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h5 class="form-section-title">النقاط السلبية (قبل)</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">النوم:</label>
+                                        <input type="number" class="form-control" id="before-sleep" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">قطع سير الحصة:</label>
+                                        <input type="number" class="form-control" id="before-interruption" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">عدم تفاعل:</label>
+                                        <input type="number" class="form-control" id="before-nonInteraction" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h5 class="form-section-title">النقاط الإيجابية (بعد)</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">التفاعل الصفي:</label>
+                                        <input type="number" class="form-control" id="after-interaction" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">المشاركة الفاعلة:</label>
+                                        <input type="number" class="form-control" id="after-participation" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">العمل بجد:</label>
+                                        <input type="number" class="form-control" id="after-hardWork" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h5 class="form-section-title">النقاط السلبية (بعد)</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">النوم:</label>
+                                        <input type="number" class="form-control" id="after-sleep" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">قطع سير الحصة:</label>
+                                        <input type="number" class="form-control" id="after-interruption" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">عدم تفاعل:</label>
+                                        <input type="number" class="form-control" id="after-nonInteraction" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end mt-4">
+                            <button class="btn btn-secondary me-2" id="cancel-add-student">إلغاء</button>
+                            <button class="btn btn-success" id="save-new-student">حفظ الطالب</button>
+                        </div>
                     </div>
                     
                     <!-- جدول الطلاب -->
@@ -949,12 +1065,198 @@
 
                     <!-- نموذج الخطة الفردية -->
                     <div id="individual-plan-form" class="plan-section">
-                        <!-- ... (نفس محتوى النموذج السابق) ... -->
+                        <h4>نموذج الخطة العلاجية الفردية</h4>
+                        <p>تم تصميم هذا النموذج لدعم الطلاب الذين يحتاجون إلى متابعة فردية لتحسين تحصيلهم الدراسي وسلوكهم.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">اسم الطالب:</label>
+                                    <select class="form-select" id="student-name">
+                                        <option value="">اختر الطالب</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">الصف:</label>
+                                    <input type="text" class="form-control" value="الأول الثانوي" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">المادة:</label>
+                                    <select class="form-select" id="subject">
+                                        <option value="">اختر المادة</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">المعلم المسؤول:</label>
+                                    <input type="text" class="form-control" id="teacher-name" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">الخطوات المقترحة للعلاج:</label>
+                            <textarea class="form-control" id="treatment-steps" rows="4" placeholder="ادخل الخطوات المقترحة للعلاج..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">مؤشرات التقدم:</label>
+                            <textarea class="form-control" id="progress-indicators" rows="3" placeholder="ادخل مؤشرات التقدم المتوقعة..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">ملاحظات المعلم:</label>
+                            <textarea class="form-control" id="teacher-notes" rows="3" placeholder="ادخل ملاحظات المعلم حول فاعلية الخطة..."></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">توقيع ولي الأمر:</label>
+                                    <input type="text" class="form-control" id="parent-signature" placeholder="توقيع ولي الأمر">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">توقيع المرشد الطلابي:</label>
+                                    <input type="text" class="form-control" value="منصور موسى حامطي" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-tracker">
+                            <h5>متابعة التقدم الأسبوعي</h5>
+                            <div class="week-tracker" id="week-tracker">
+                                <!-- سيتم إضافة أسابيع المتابعة هنا -->
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="save-individual-plan">حفظ الخطة الفردية</button>
+                        <button class="btn btn-outline-secondary me-2" id="export-individual-plan">تصدير PDF</button>
                     </div>
 
                     <!-- نموذج الخطة الجماعية -->
                     <div id="group-plan-form" class="plan-section" style="display: none;">
-                        <!-- ... (نفس محتوى النموذج السابق) ... -->
+                        <h4>نموذج الخطة العلاجية الجماعية</h4>
+                        <p>تم تصميم هذا النموذج لدعم مجموعة من الطلاب المتشابهين في التحديات التعليمية والسلوكية.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">المادة:</label>
+                                    <select class="form-select" id="group-subject">
+                                        <option value="">اختر المادة</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">الصف:</label>
+                                    <select class="form-select" id="group-class">
+                                        <option value="10">الأول الثانوي</option>
+                                        <option value="11">الثاني الثانوي</option>
+                                        <option value="12">الثالث الثانوي</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">المعلم المسؤول:</label>
+                                    <input type="text" class="form-control" id="group-teacher" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">الطلاب المستهدفون:</label>
+                            <div class="form-control" style="height: 150px; overflow-y: auto;" id="group-students-list">
+                                <!-- سيتم إضافة قائمة الطلاب هنا -->
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">شواهد التشخيص:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="diagnosis-test">
+                                <label class="form-check-label" for="diagnosis-test">
+                                    الاختبار التحصيلي
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="diagnosis-observation">
+                                <label class="form-check-label" for="diagnosis-observation">
+                                    الملاحظة الصفية
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="diagnosis-assignments">
+                                <label class="form-check-label" for="diagnosis-assignments">
+                                    الواجبات والتكليفات
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <h5 class="mt-4">الاستراتيجيات التعليمية المقترحة</h5>
+                        <table class="treatment-table">
+                            <thead>
+                                <tr>
+                                    <th>الاستراتيجية</th>
+                                    <th>التطبيق</th>
+                                    <th>شواهد التعلم</th>
+                                    <th>مؤشرات التقدم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>التعلم التعاوني</td>
+                                    <td>
+                                        <input type="checkbox" class="strategy-checkbox" id="strategy1">
+                                    </td>
+                                    <td>أوراق العمل</td>
+                                    <td>تحسين المشاركة</td>
+                                </tr>
+                                <tr>
+                                    <td>التعلم النشط</td>
+                                    <td>
+                                        <input type="checkbox" class="strategy-checkbox" id="strategy2">
+                                    </td>
+                                    <td>الأنشطة الصفية</td>
+                                    <td>زيادة التفاعل</td>
+                                </tr>
+                                <tr>
+                                    <td>التفريد في التعليم</td>
+                                    <td>
+                                        <input type="checkbox" class="strategy-checkbox" id="strategy3">
+                                    </td>
+                                    <td>تكليفات فردية</td>
+                                    <td>تحسين الأداء</td>
+                                </tr>
+                                <tr>
+                                    <td>التعلم القائم على المشاريع</td>
+                                    <td>
+                                        <input type="checkbox" class="strategy-checkbox" id="strategy4">
+                                    </td>
+                                    <td>المهام الأدائية</td>
+                                    <td>تطبيق المهارات</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">ملاحظات إضافية:</label>
+                            <textarea class="form-control" id="group-notes" rows="3" placeholder="ادخل أي ملاحظات إضافية حول الخطة الجماعية..."></textarea>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="save-group-plan">حفظ الخطة الجماعية</button>
+                        <button class="btn btn-outline-secondary me-2" id="export-group-plan">تصدير PDF</button>
                     </div>
                 </div>
             </div>
@@ -1259,7 +1561,71 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ... (نفس البيانات والوظائف السابقة) ...
+        // بيانات الطلاب من ملف Excel المرفق
+        let studentsData = [
+            {
+                name: "ابراهيم بن عباس بن حسين اليامي",
+                before: { interaction: 6, participation: 2, hardWork: 2, sleep: 4, interruption: 5, nonInteraction: 6 },
+                after: { interaction: 11, participation: 11, hardWork: 11, sleep: 2, interruption: 0, nonInteraction: 11 }
+            },
+            {
+                name: "ذياب بن تركي بن سليم أبو ثرياء",
+                before: { interaction: 6, participation: 3, hardWork: 3, sleep: 5, interruption: 10, nonInteraction: 6 },
+                after: { interaction: 12, participation: 14, hardWork: 14, sleep: 2, interruption: 2, nonInteraction: 11 }
+            },
+            // ... (بقية بيانات الطلاب كما في الكود السابق)
+        ];
+
+        // بيانات المعلمين من ملف Excel المرفق
+        const teachersData = [
+            { name: "عبدالله محمد حمدي", subject: "كيمياء" },
+            { name: "عبدالعزيز عايض القحطاني", subject: "رياضيات" },
+            { name: "عبدالرحمن عبدالله الغامدي", subject: "أحياء" },
+            { name: "فهد ابراهيم المحبوب", subject: "انجليزي" },
+            { name: "محمد أحمد العميري", subject: "الكفايات اللغوية" },
+            { name: "فارس سعيد الغامدي", subject: "التقنية الرقمية" }
+        ];
+
+        // بيانات الخطط العلاجية
+        let treatmentPlans = [
+            {
+                id: 1,
+                studentId: 0,
+                type: "فردية",
+                subject: "كيمياء",
+                startDate: "2023-10-01",
+                progress: 75,
+                lastUpdate: "2023-11-15",
+                status: "نشط"
+            },
+            {
+                id: 2,
+                studentId: 5,
+                type: "فردية",
+                subject: "رياضيات",
+                startDate: "2023-10-10",
+                progress: 60,
+                lastUpdate: "2023-11-10",
+                status: "نشط"
+            },
+            {
+                id: 3,
+                studentId: 12,
+                type: "جماعية",
+                subject: "علوم الأرض والفضاء",
+                startDate: "2023-09-20",
+                progress: 85,
+                lastUpdate: "2023-11-12",
+                status: "مكتمل"
+            }
+        ];
+
+        // متغيرات للرسوم البيانية
+        let behaviorChart = null;
+        let comparisonChart = null;
+
+        // تعيين التاريخ الحالي
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('ar-EG');
 
         // تهيئة النظام
         document.addEventListener('DOMContentLoaded', function() {
@@ -1269,7 +1635,950 @@
             initializeTreatmentPlansSystem();
         });
 
-        // ... (بقية الوظائف كما هي) ...
+        // تهيئة النظام الرئيسي
+        function initializeSystem() {
+            // تحديث الإحصائيات
+            updateStatistics();
+            
+            // تحديث قوائم الطلاب والمعلمين
+            updateStudentsList();
+            updateTeachersList();
+            
+            // إنشاء الرسوم البيانية
+            createBehaviorChart();
+            createComparisonChart();
+            
+            // تحديث أفضل الطلاب متحسنين
+            updateTopImprovers();
+        }
+
+        // نظام إدارة الطلاب
+        function initializeStudentManagement() {
+            // إظهار/إخفاء نموذج إضافة طالب
+            document.getElementById('add-student-btn').addEventListener('click', function() {
+                const form = document.getElementById('add-student-form');
+                form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            // إلغاء إضافة طالب
+            document.getElementById('cancel-add-student').addEventListener('click', function() {
+                document.getElementById('add-student-form').style.display = 'none';
+                resetStudentForm();
+            });
+            
+            // حفظ طالب جديد
+            document.getElementById('save-new-student').addEventListener('click', saveNewStudent);
+            
+            // البحث عن الطلاب
+            document.getElementById('student-search').addEventListener('input', searchStudents);
+            
+            // تصدير البيانات
+            document.getElementById('export-excel').addEventListener('click', exportToExcel);
+            document.getElementById('export-pdf').addEventListener('click', exportToPDF);
+        }
+
+        // نظام الخطط العلاجية
+        function initializeTreatmentPlansSystem() {
+            // ملء قائمة الطلاب في نموذج الخطة الفردية
+            const studentSelect = document.getElementById('student-name');
+            studentSelect.innerHTML = '<option value="">اختر الطالب</option>';
+            studentsData.forEach((student, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = student.name;
+                studentSelect.appendChild(option);
+            });
+            
+            // ملء قائمة المواد في النماذج
+            const subjectSelect = document.getElementById('subject');
+            const groupSubjectSelect = document.getElementById('group-subject');
+            
+            subjectSelect.innerHTML = '<option value="">اختر المادة</option>';
+            groupSubjectSelect.innerHTML = '<option value="">اختر المادة</option>';
+            
+            teachersData.forEach(teacher => {
+                const option1 = document.createElement('option');
+                option1.value = teacher.subject;
+                option1.textContent = `${teacher.subject} - ${teacher.name}`;
+                subjectSelect.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = teacher.subject;
+                option2.textContent = teacher.subject;
+                groupSubjectSelect.appendChild(option2);
+            });
+            
+            // اختيار نوع الخطة
+            document.getElementById('individual-plan-card').addEventListener('click', function() {
+                selectPlanType('individual');
+            });
+            
+            document.getElementById('group-plan-card').addEventListener('click', function() {
+                selectPlanType('group');
+            });
+            
+            // تحديث اسم المعلم عند تغيير المادة
+            document.getElementById('subject').addEventListener('change', function() {
+                updateTeacherName();
+            });
+            
+            document.getElementById('group-subject').addEventListener('change', function() {
+                updateGroupTeacherName();
+            });
+            
+            // تهيئة متابعة الأسابيع
+            initializeWeekTracker();
+            
+            // حفظ الخطط
+            document.getElementById('save-individual-plan').addEventListener('click', saveIndividualPlan);
+            document.getElementById('save-group-plan').addEventListener('click', saveGroupPlan);
+            
+            // تصدير النماذج إلى PDF
+            document.getElementById('export-individual-plan').addEventListener('click', exportIndividualPlanToPDF);
+            document.getElementById('export-group-plan').addEventListener('click', exportGroupPlanToPDF);
+            
+            // تحديث قائمة الطلاب للخطة الجماعية
+            updateGroupStudentsList();
+            
+            // تحديث جدول الخطط العلاجية
+            updateTreatmentPlansTable();
+            
+            // إضافة مستمعي الأحداث لأزرار التقارير
+            document.getElementById('generate-excellence-report').addEventListener('click', function() {
+                showNotification('جاري إنشاء تقرير الطلاب المتميزين وإرساله عبر ClassDojo...', 'info');
+            });
+            
+            document.getElementById('generate-struggling-report').addEventListener('click', function() {
+                showNotification('جاري إنشاء تقرير الطلاب المتعثرين وإرساله عبر ClassDojo...', 'info');
+            });
+            
+            document.getElementById('generate-comprehensive-report').addEventListener('click', function() {
+                showNotification('جاري إنشاء التقرير الشامل عن مبادرة هُمام...', 'info');
+            });
+        }
+
+        // حفظ طالب جديد
+        function saveNewStudent() {
+            const name = document.getElementById('new-student-name').value;
+            
+            if (!name) {
+                showNotification('يرجى إدخال اسم الطالب', 'error');
+                return;
+            }
+            
+            // جمع بيانات الطالب الجديد
+            const newStudent = {
+                name: name,
+                before: {
+                    interaction: parseInt(document.getElementById('before-interaction').value) || 0,
+                    participation: parseInt(document.getElementById('before-participation').value) || 0,
+                    hardWork: parseInt(document.getElementById('before-hardWork').value) || 0,
+                    sleep: parseInt(document.getElementById('before-sleep').value) || 0,
+                    interruption: parseInt(document.getElementById('before-interruption').value) || 0,
+                    nonInteraction: parseInt(document.getElementById('before-nonInteraction').value) || 0
+                },
+                after: {
+                    interaction: parseInt(document.getElementById('after-interaction').value) || 0,
+                    participation: parseInt(document.getElementById('after-participation').value) || 0,
+                    hardWork: parseInt(document.getElementById('after-hardWork').value) || 0,
+                    sleep: parseInt(document.getElementById('after-sleep').value) || 0,
+                    interruption: parseInt(document.getElementById('after-interruption').value) || 0,
+                    nonInteraction: parseInt(document.getElementById('after-nonInteraction').value) || 0
+                }
+            };
+            
+            // إضافة الطالب الجديد إلى البيانات
+            studentsData.push(newStudent);
+            
+            // تحديث النظام
+            updateSystemAfterStudentAdded();
+            
+            // إغلاق النموذج وإعادة تعيينه
+            document.getElementById('add-student-form').style.display = 'none';
+            resetStudentForm();
+            
+            showNotification('تم إضافة الطالب بنجاح وتحديث جميع الرسوم البيانية', 'success');
+        }
+
+        // تحديث النظام بعد إضافة طالب جديد
+        function updateSystemAfterStudentAdded() {
+            // تحديث الإحصائيات
+            updateStatistics();
+            
+            // تحديث قائمة الطلاب
+            updateStudentsList();
+            
+            // تحديث الرسوم البيانية
+            updateCharts();
+            
+            // تحديث أفضل الطلاب متحسنين
+            updateTopImprovers();
+            
+            // تحديث قائمة الطلاب في نموذج الخطط العلاجية
+            initializeTreatmentPlansSystem();
+        }
+
+        // إعادة تعيين نموذج إضافة طالب
+        function resetStudentForm() {
+            document.getElementById('new-student-name').value = '';
+            document.getElementById('before-interaction').value = '0';
+            document.getElementById('before-participation').value = '0';
+            document.getElementById('before-hardWork').value = '0';
+            document.getElementById('before-sleep').value = '0';
+            document.getElementById('before-interruption').value = '0';
+            document.getElementById('before-nonInteraction').value = '0';
+            document.getElementById('after-interaction').value = '0';
+            document.getElementById('after-participation').value = '0';
+            document.getElementById('after-hardWork').value = '0';
+            document.getElementById('after-sleep').value = '0';
+            document.getElementById('after-interruption').value = '0';
+            document.getElementById('after-nonInteraction').value = '0';
+        }
+
+        // تحديث الإحصائيات
+        function updateStatistics() {
+            document.getElementById('total-students').textContent = studentsData.length;
+            
+            // حساب الطلاب بحاجة متابعة (الطلاب الذين لديهم تحسن أقل من 20%)
+            let needsFollowup = 0;
+            studentsData.forEach(student => {
+                const totalBefore = student.before.interaction + student.before.participation + student.before.hardWork;
+                const totalAfter = student.after.interaction + student.after.participation + student.after.hardWork;
+                const improvement = totalBefore > 0 ? ((totalAfter - totalBefore) / totalBefore) * 100 : 0;
+                if (improvement < 20) needsFollowup++;
+            });
+            document.getElementById('needs-followup').textContent = needsFollowup;
+            
+            // مشاركة أولياء الأمور (افتراضي 78%)
+            document.getElementById('parent-participation').textContent = "78%";
+            
+            // متوسط التحسن
+            let totalImprovement = 0;
+            studentsData.forEach(student => {
+                const totalBefore = student.before.interaction + student.before.participation + student.before.hardWork;
+                const totalAfter = student.after.interaction + student.after.participation + student.after.hardWork;
+                const improvement = totalBefore > 0 ? ((totalAfter - totalBefore) / totalBefore) * 100 : 0;
+                totalImprovement += improvement;
+            });
+            const avgImprovement = Math.round(totalImprovement / studentsData.length);
+            document.getElementById('avg-improvement').textContent = `${avgImprovement}%`;
+        }
+
+        // تحديث قائمة الطلاب
+        function updateStudentsList() {
+            const studentsTable = document.getElementById('students-table');
+            studentsTable.innerHTML = '';
+            
+            studentsData.forEach((student, index) => {
+                const totalBefore = student.before.interaction + student.before.participation + student.before.hardWork;
+                const totalAfter = student.after.interaction + student.after.participation + student.after.hardWork;
+                const improvement = totalBefore > 0 ? ((totalAfter - totalBefore) / totalBefore) * 100 : 0;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.before.interaction}</td>
+                    <td>${student.before.participation}</td>
+                    <td>${student.before.hardWork}</td>
+                    <td>${student.before.sleep}</td>
+                    <td>${student.before.interruption}</td>
+                    <td>${student.before.nonInteraction}</td>
+                    <td>${student.after.interaction}</td>
+                    <td>${student.after.participation}</td>
+                    <td>${student.after.hardWork}</td>
+                    <td>${student.after.sleep}</td>
+                    <td>${student.after.interruption}</td>
+                    <td>${student.after.nonInteraction}</td>
+                    <td class="${improvement > 0 ? 'improvement' : 'regression'}">${Math.round(improvement)}%</td>
+                    <td>
+                        <div class="student-actions">
+                            <button class="btn btn-sm btn-outline-primary edit-student-btn" data-index="${index}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-student-btn" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                studentsTable.appendChild(row);
+            });
+            
+            // إضافة مستمعي الأحداث لأزرار الحذف
+            document.querySelectorAll('.delete-student-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    deleteStudent(index);
+                });
+            });
+        }
+
+        // تحديث قائمة المعلمين
+        function updateTeachersList() {
+            const teachersList = document.getElementById('teachers-list');
+            teachersList.innerHTML = '';
+            
+            teachersData.forEach(teacher => {
+                const teacherCard = document.createElement('div');
+                teacherCard.className = 'teacher-card';
+                teacherCard.innerHTML = `
+                    <h5>${teacher.name}</h5>
+                    <p class="mb-1"><strong>المادة:</strong> ${teacher.subject}</p>
+                    <p class="mb-0"><strong>عدد الطلاب:</strong> ${studentsData.length}</p>
+                `;
+                teachersList.appendChild(teacherCard);
+            });
+        }
+
+        // حذف طالب
+        function deleteStudent(index) {
+            if (confirm('هل أنت متأكد من حذف هذا الطالب؟')) {
+                studentsData.splice(index, 1);
+                updateSystemAfterStudentAdded();
+                showNotification('تم حذف الطالب بنجاح', 'success');
+            }
+        }
+
+        // البحث عن الطلاب
+        function searchStudents() {
+            const searchTerm = document.getElementById('student-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#students-table tr');
+            
+            rows.forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // إنشاء رسم بياني لتوزيع السلوكيات
+        function createBehaviorChart() {
+            const ctx = document.getElementById('behaviorChart').getContext('2d');
+            
+            // حساب المتوسطات
+            let totalPositiveBefore = 0;
+            let totalNegativeBefore = 0;
+            let totalPositiveAfter = 0;
+            let totalNegativeAfter = 0;
+            
+            studentsData.forEach(student => {
+                totalPositiveBefore += student.before.interaction + student.before.participation + student.before.hardWork;
+                totalNegativeBefore += student.before.sleep + student.before.interruption + student.before.nonInteraction;
+                totalPositiveAfter += student.after.interaction + student.after.participation + student.after.hardWork;
+                totalNegativeAfter += student.after.sleep + student.after.interruption + student.after.nonInteraction;
+            });
+            
+            const avgPositiveBefore = Math.round(totalPositiveBefore / studentsData.length);
+            const avgNegativeBefore = Math.round(totalNegativeBefore / studentsData.length);
+            const avgPositiveAfter = Math.round(totalPositiveAfter / studentsData.length);
+            const avgNegativeAfter = Math.round(totalNegativeAfter / studentsData.length);
+            
+            behaviorChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['إيجابية قبل', 'سلبية قبل', 'إيجابية بعد', 'سلبية بعد'],
+                    datasets: [{
+                        label: 'متوسط السلوكيات',
+                        data: [avgPositiveBefore, avgNegativeBefore, avgPositiveAfter, avgNegativeAfter],
+                        backgroundColor: [
+                            'rgba(39, 174, 96, 0.7)',
+                            'rgba(231, 76, 60, 0.7)',
+                            'rgba(39, 174, 96, 0.9)',
+                            'rgba(231, 76, 60, 0.9)'
+                        ],
+                        borderColor: [
+                            'rgba(39, 174, 96, 1)',
+                            'rgba(231, 76, 60, 1)',
+                            'rgba(39, 174, 96, 1)',
+                            'rgba(231, 76, 60, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'متوسط النقاط'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'متوسط السلوكيات الإيجابية والسلبية'
+                        }
+                    }
+                }
+            });
+        }
+
+        // إنشاء رسم بياني للمقارنة
+        function createComparisonChart() {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            
+            // حساب المتوسطات للسلوكيات الإيجابية قبل وبعد
+            let interactionBefore = 0;
+            let participationBefore = 0;
+            let hardWorkBefore = 0;
+            let interactionAfter = 0;
+            let participationAfter = 0;
+            let hardWorkAfter = 0;
+            
+            studentsData.forEach(student => {
+                interactionBefore += student.before.interaction;
+                participationBefore += student.before.participation;
+                hardWorkBefore += student.before.hardWork;
+                interactionAfter += student.after.interaction;
+                participationAfter += student.after.participation;
+                hardWorkAfter += student.after.hardWork;
+            });
+            
+            const avgInteractionBefore = Math.round(interactionBefore / studentsData.length);
+            const avgParticipationBefore = Math.round(participationBefore / studentsData.length);
+            const avgHardWorkBefore = Math.round(hardWorkBefore / studentsData.length);
+            const avgInteractionAfter = Math.round(interactionAfter / studentsData.length);
+            const avgParticipationAfter = Math.round(participationAfter / studentsData.length);
+            const avgHardWorkAfter = Math.round(hardWorkAfter / studentsData.length);
+            
+            comparisonChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['التفاعل الصفي', 'المشاركة الفاعلة', 'العمل بجد'],
+                    datasets: [
+                        {
+                            label: 'قبل المبادرة',
+                            data: [avgInteractionBefore, avgParticipationBefore, avgHardWorkBefore],
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'بعد المبادرة',
+                            data: [avgInteractionAfter, avgParticipationAfter, avgHardWorkAfter],
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 15
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'مقارنة السلوكيات الإيجابية قبل وبعد المبادرة'
+                        }
+                    }
+                }
+            });
+        }
+
+        // تحديث الرسوم البيانية
+        function updateCharts() {
+            if (behaviorChart) behaviorChart.destroy();
+            if (comparisonChart) comparisonChart.destroy();
+            
+            createBehaviorChart();
+            createComparisonChart();
+        }
+
+        // تحديث أفضل الطلاب متحسنين
+        function updateTopImprovers() {
+            const topImproversTable = document.getElementById('top-improvers-table');
+            topImproversTable.innerHTML = '';
+            
+            // حساب التحسن لكل طالب
+            const studentsWithImprovement = studentsData.map((student, index) => {
+                const totalBefore = student.before.interaction + student.before.participation + student.before.hardWork;
+                const totalAfter = student.after.interaction + student.after.participation + student.after.hardWork;
+                const improvement = totalBefore > 0 ? ((totalAfter - totalBefore) / totalBefore) * 100 : 0;
+                
+                return {
+                    index: index,
+                    name: student.name,
+                    improvement: improvement,
+                    interactionImprovement: student.after.interaction - student.before.interaction,
+                    participationImprovement: student.after.participation - student.before.participation,
+                    hardWorkImprovement: student.after.hardWork - student.before.hardWork
+                };
+            });
+            
+            // ترتيب الطلاب حسب التحسن
+            studentsWithImprovement.sort((a, b) => b.improvement - a.improvement);
+            
+            // عرض أفضل 5 طلاب
+            const top5 = studentsWithImprovement.slice(0, 5);
+            
+            top5.forEach((student, rank) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${rank + 1}</td>
+                    <td>${student.name}</td>
+                    <td class="improvement">+${Math.round(student.improvement)}%</td>
+                    <td>+${student.interactionImprovement}</td>
+                    <td>+${student.participationImprovement}</td>
+                    <td>+${student.hardWorkImprovement}</td>
+                `;
+                topImproversTable.appendChild(row);
+            });
+        }
+
+        // نظام التنقل بين الصفحات
+        function initializeNavigation() {
+            document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // تحديث حالة التنقل النشط
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        function showPage(pageId) {
+            // إخفاء جميع الصفحات
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // إظهار الصفحة المطلوبة
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // وظائف الخطط العلاجية
+        function selectPlanType(type) {
+            const individualCard = document.getElementById('individual-plan-card');
+            const groupCard = document.getElementById('group-plan-card');
+            const individualForm = document.getElementById('individual-plan-form');
+            const groupForm = document.getElementById('group-plan-form');
+            
+            if (type === 'individual') {
+                individualCard.classList.add('selected');
+                groupCard.classList.remove('selected');
+                individualForm.style.display = 'block';
+                groupForm.style.display = 'none';
+            } else {
+                individualCard.classList.remove('selected');
+                groupCard.classList.add('selected');
+                individualForm.style.display = 'none';
+                groupForm.style.display = 'block';
+            }
+        }
+
+        function updateTeacherName() {
+            const subject = document.getElementById('subject').value;
+            const teacher = teachersData.find(t => t.subject === subject);
+            document.getElementById('teacher-name').value = teacher ? teacher.name : '';
+        }
+
+        function updateGroupTeacherName() {
+            const subject = document.getElementById('group-subject').value;
+            const teacher = teachersData.find(t => t.subject === subject);
+            document.getElementById('group-teacher').value = teacher ? teacher.name : '';
+        }
+
+        function initializeWeekTracker() {
+            const weekTracker = document.getElementById('week-tracker');
+            weekTracker.innerHTML = '';
+            
+            for (let i = 1; i <= 16; i++) {
+                const weekItem = document.createElement('div');
+                weekItem.className = 'week-item';
+                if (i <= 8) {
+                    weekItem.classList.add('active');
+                }
+                weekItem.innerHTML = `
+                    <div>الأسبوع ${i}</div>
+                    <div>
+                        <input type="checkbox" class="form-check-input" id="week-${i}">
+                    </div>
+                `;
+                weekTracker.appendChild(weekItem);
+            }
+        }
+
+        function updateGroupStudentsList() {
+            const studentsList = document.getElementById('group-students-list');
+            studentsList.innerHTML = '';
+            
+            studentsData.forEach((student, index) => {
+                const studentItem = document.createElement('div');
+                studentItem.className = 'form-check';
+                studentItem.innerHTML = `
+                    <input class="form-check-input" type="checkbox" id="group-student-${index}">
+                    <label class="form-check-label" for="group-student-${index}">
+                        ${student.name}
+                    </label>
+                `;
+                studentsList.appendChild(studentItem);
+            });
+        }
+
+        function saveIndividualPlan() {
+            const studentIndex = document.getElementById('student-name').value;
+            const subject = document.getElementById('subject').value;
+            const treatmentSteps = document.getElementById('treatment-steps').value;
+            const progressIndicators = document.getElementById('progress-indicators').value;
+            const teacherNotes = document.getElementById('teacher-notes').value;
+            const parentSignature = document.getElementById('parent-signature').value;
+            
+            if (!studentIndex || !treatmentSteps || !progressIndicators) {
+                showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            // إنشاء خطة علاجية جديدة
+            const newPlan = {
+                id: treatmentPlans.length + 1,
+                studentId: parseInt(studentIndex),
+                type: "فردية",
+                subject: document.getElementById('subject').options[document.getElementById('subject').selectedIndex].text,
+                startDate: new Date().toISOString().split('T')[0],
+                progress: 0,
+                lastUpdate: new Date().toISOString().split('T')[0],
+                status: "نشط"
+            };
+            
+            treatmentPlans.push(newPlan);
+            
+            // إعادة تعيين النموذج
+            document.getElementById('student-name').value = '';
+            document.getElementById('treatment-steps').value = '';
+            document.getElementById('progress-indicators').value = '';
+            document.getElementById('teacher-notes').value = '';
+            document.getElementById('parent-signature').value = '';
+            
+            // تحديث الجدول
+            updateTreatmentPlansTable();
+            
+            showNotification('تم حفظ الخطة الفردية بنجاح', 'success');
+        }
+
+        function saveGroupPlan() {
+            const subject = document.getElementById('group-subject').value;
+            const classLevel = document.getElementById('group-class').value;
+            const notes = document.getElementById('group-notes').value;
+            
+            // التحقق من اختيار الطلاب
+            const selectedStudents = [];
+            studentsData.forEach((student, index) => {
+                const checkbox = document.getElementById(`group-student-${index}`);
+                if (checkbox && checkbox.checked) {
+                    selectedStudents.push(student.name);
+                }
+            });
+            
+            if (selectedStudents.length === 0) {
+                showNotification('يرجى اختيار طالب واحد على الأقل', 'error');
+                return;
+            }
+            
+            // إنشاء خطة جماعية جديدة
+            const newPlan = {
+                id: treatmentPlans.length + 1,
+                studentId: null, // للخطط الجماعية
+                type: "جماعية",
+                subject: document.getElementById('group-subject').options[document.getElementById('group-subject').selectedIndex].text,
+                startDate: new Date().toISOString().split('T')[0],
+                progress: 0,
+                lastUpdate: new Date().toISOString().split('T')[0],
+                status: "نشط",
+                students: selectedStudents
+            };
+            
+            treatmentPlans.push(newPlan);
+            
+            // إعادة تعيين النموذج
+            document.getElementById('group-notes').value = '';
+            
+            // إلغاء تحديد جميع الطلاب
+            studentsData.forEach((student, index) => {
+                const checkbox = document.getElementById(`group-student-${index}`);
+                if (checkbox) {
+                    checkbox.checked = false;
+                }
+            });
+            
+            // تحديث الجدول
+            updateTreatmentPlansTable();
+            
+            showNotification('تم حفظ الخطة الجماعية بنجاح', 'success');
+        }
+
+        function updateTreatmentPlansTable() {
+            const tableBody = document.getElementById('treatment-plans-table');
+            tableBody.innerHTML = '';
+            
+            treatmentPlans.forEach(plan => {
+                const student = plan.studentId !== null ? studentsData[plan.studentId] : { name: "مجموعة طلاب" };
+                
+                let progressClass = "";
+                if (plan.progress >= 80) {
+                    progressClass = "good-behavior";
+                } else if (plan.progress >= 50) {
+                    progressClass = "";
+                } else {
+                    progressClass = "bad-behavior";
+                }
+                
+                let statusClass = "";
+                if (plan.status === "نشط") {
+                    statusClass = "good-behavior";
+                } else if (plan.status === "مكتمل") {
+                    statusClass = "";
+                } else {
+                    statusClass = "bad-behavior";
+                }
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${plan.type}</td>
+                    <td>${plan.subject}</td>
+                    <td>${plan.startDate}</td>
+                    <td class="${progressClass}">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: ${plan.progress}%">${plan.progress}%</div>
+                        </div>
+                    </td>
+                    <td>${plan.lastUpdate}</td>
+                    <td class="${statusClass}">${plan.status}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary view-plan-btn" data-id="${plan.id}">عرض</button>
+                        <button class="btn btn-sm btn-outline-warning mt-1 edit-plan-btn" data-id="${plan.id}">تعديل</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            // إضافة مستمعي الأحداث للأزرار
+            document.querySelectorAll('.view-plan-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const planId = this.getAttribute('data-id');
+                    viewPlanDetails(planId);
+                });
+            });
+            
+            document.querySelectorAll('.edit-plan-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const planId = this.getAttribute('data-id');
+                    editPlan(planId);
+                });
+            });
+        }
+
+        function viewPlanDetails(planId) {
+            const plan = treatmentPlans.find(p => p.id == planId);
+            if (plan) {
+                showNotification(`عرض تفاصيل الخطة العلاجية #${planId}`, 'info');
+                // هنا يمكنك فتح نموذج عرض التفاصيل
+            }
+        }
+
+        function editPlan(planId) {
+            const plan = treatmentPlans.find(p => p.id == planId);
+            if (plan) {
+                showNotification(`فتح نموذج تعديل الخطة العلاجية #${planId}`, 'info');
+                // هنا يمكنك فتح نموذج التعديل مع تعبئة البيانات
+            }
+        }
+
+        // تصدير الخطة الفردية إلى PDF
+        function exportIndividualPlanToPDF() {
+            showNotification('جاري تصدير الخطة الفردية إلى PDF...', 'info');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(16);
+                doc.text('الخطة العلاجية الفردية - نظام هُمام', 105, 15, { align: 'center' });
+                
+                doc.setFontSize(12);
+                doc.text(`اسم الطالب: ${document.getElementById('student-name').value}`, 20, 30);
+                doc.text(`المادة: ${document.getElementById('subject').value}`, 20, 40);
+                doc.text(`المعلم المسؤول: ${document.getElementById('teacher-name').value}`, 20, 50);
+                
+                doc.text('الخطوات المقترحة للعلاج:', 20, 70);
+                doc.text(document.getElementById('treatment-steps').value, 20, 80, { maxWidth: 170 });
+                
+                doc.text('مؤشرات التقدم:', 20, 120);
+                doc.text(document.getElementById('progress-indicators').value, 20, 130, { maxWidth: 170 });
+                
+                doc.text(`توقيع ولي الأمر: ${document.getElementById('parent-signature').value}`, 20, 180);
+                doc.text('توقيع المرشد الطلابي: منصور موسى حامطي', 20, 190);
+                
+                doc.save('الخطة_العلاجية_الفردية.pdf');
+                
+                showNotification('تم تصدير الخطة الفردية إلى PDF بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في تصدير PDF:', error);
+                showNotification('حدث خطأ أثناء تصدير PDF', 'error');
+            }
+        }
+
+        // تصدير الخطة الجماعية إلى PDF
+        function exportGroupPlanToPDF() {
+            showNotification('جاري تصدير الخطة الجماعية إلى PDF...', 'info');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(16);
+                doc.text('الخطة العلاجية الجماعية - نظام هُمام', 105, 15, { align: 'center' });
+                
+                doc.setFontSize(12);
+                doc.text(`المادة: ${document.getElementById('group-subject').value}`, 20, 30);
+                doc.text(`الصف: ${document.getElementById('group-class').value}`, 20, 40);
+                doc.text(`المعلم المسؤول: ${document.getElementById('group-teacher').value}`, 20, 50);
+                
+                // جمع الطلاب المختارين
+                const selectedStudents = [];
+                studentsData.forEach((student, index) => {
+                    const checkbox = document.getElementById(`group-student-${index}`);
+                    if (checkbox && checkbox.checked) {
+                        selectedStudents.push(student.name);
+                    }
+                });
+                
+                doc.text('الطلاب المستهدفون:', 20, 70);
+                let yPosition = 80;
+                selectedStudents.forEach(student => {
+                    doc.text(`- ${student}`, 25, yPosition);
+                    yPosition += 7;
+                });
+                
+                doc.text('الاستراتيجيات التعليمية المقترحة:', 20, yPosition + 10);
+                yPosition += 20;
+                
+                // جمع الاستراتيجيات المختارة
+                const strategies = [
+                    { name: 'التعلم التعاوني', id: 'strategy1' },
+                    { name: 'التعلم النشط', id: 'strategy2' },
+                    { name: 'التفريد في التعليم', id: 'strategy3' },
+                    { name: 'التعلم القائم على المشاريع', id: 'strategy4' }
+                ];
+                
+                strategies.forEach(strategy => {
+                    const checkbox = document.getElementById(strategy.id);
+                    if (checkbox && checkbox.checked) {
+                        doc.text(`- ${strategy.name}`, 25, yPosition);
+                        yPosition += 7;
+                    }
+                });
+                
+                doc.save('الخطة_العلاجية_الجماعية.pdf');
+                
+                showNotification('تم تصدير الخطة الجماعية إلى PDF بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في تصدير PDF:', error);
+                showNotification('حدث خطأ أثناء تصدير PDF', 'error');
+            }
+        }
+
+        // تصدير إلى Excel
+        function exportToExcel() {
+            showNotification('جاري تصدير البيانات إلى Excel...', 'info');
+            // هنا يمكنك إضافة كود لتصدير البيانات إلى Excel
+        }
+
+        // تصدير إلى PDF
+        function exportToPDF() {
+            showNotification('جاري تصدير البيانات إلى PDF...', 'info');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(16);
+                doc.text('تقرير الطلاب - نظام هُمام', 105, 15, { align: 'center' });
+                
+                doc.setFontSize(12);
+                let yPosition = 30;
+                
+                // إضافة جدول الطلاب
+                const tableData = [];
+                studentsData.forEach(student => {
+                    const totalBefore = student.before.interaction + student.before.participation + student.before.hardWork;
+                    const totalAfter = student.after.interaction + student.after.participation + student.after.hardWork;
+                    const improvement = totalBefore > 0 ? ((totalAfter - totalBefore) / totalBefore) * 100 : 0;
+                    
+                    tableData.push([
+                        student.name,
+                        totalBefore,
+                        totalAfter,
+                        `${Math.round(improvement)}%`
+                    ]);
+                });
+                
+                doc.autoTable({
+                    startY: yPosition,
+                    head: [['اسم الطالب', 'النقاط قبل', 'النقاط بعد', 'التحسن']],
+                    body: tableData,
+                    styles: { font: 'helvetica', fontSize: 10 },
+                    headStyles: { fillColor: [26, 82, 118] }
+                });
+                
+                doc.save('تقرير_الطلاب.pdf');
+                
+                showNotification('تم تصدير البيانات إلى PDF بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في تصدير PDF:', error);
+                showNotification('حدث خطأ أثناء تصدير PDF', 'error');
+            }
+        }
+
+        // إظهار الإشعارات
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // إظهار مؤشر التحميل
+        function showLoading() {
+            document.getElementById('loading-overlay').style.display = 'flex';
+        }
+
+        // إخفاء مؤشر التحميل
+        function hideLoading() {
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
     </script>
 </body>
 </html>
