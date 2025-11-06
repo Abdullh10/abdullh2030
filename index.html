@@ -1561,7 +1561,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // بيانات الطلاب من ملف Excel المرفق
+        // بيانات الطلاب من ملف Excel المرفق - جميع الطلاب الـ 28
         let studentsData = [
             {
                 name: "ابراهيم بن عباس بن حسين اليامي",
@@ -1573,7 +1573,136 @@
                 before: { interaction: 6, participation: 3, hardWork: 3, sleep: 5, interruption: 10, nonInteraction: 6 },
                 after: { interaction: 12, participation: 14, hardWork: 14, sleep: 2, interruption: 2, nonInteraction: 11 }
             },
-            // ... (بقية بيانات الطلاب كما في الكود السابق)
+            {
+                name: "عبدالله بن سالم بن جبر الخالدي",
+                before: { interaction: 5, participation: 4, hardWork: 3, sleep: 4, interruption: 12, nonInteraction: 5 },
+                after: { interaction: 12, participation: 15, hardWork: 11, sleep: 1, interruption: 2, nonInteraction: 10 }
+            },
+            {
+                name: "فارس بن فهد بن احمد ال صيدة",
+                before: { interaction: 6, participation: 5, hardWork: 2, sleep: 5, interruption: 5, nonInteraction: 4 },
+                after: { interaction: 10, participation: 14, hardWork: 14, sleep: 2, interruption: 0, nonInteraction: 10 }
+            },
+            {
+                name: "فهد بن تركي بن حمود الجبيري الشهري",
+                before: { interaction: 5, participation: 6, hardWork: 1, sleep: 4, interruption: 13, nonInteraction: 5 },
+                after: { interaction: 10, participation: 17, hardWork: 11, sleep: 1, interruption: 3, nonInteraction: 10 }
+            },
+            {
+                name: "مبارك بن حمد بن راشد الهاجري",
+                before: { interaction: 6, participation: 5, hardWork: 2, sleep: 5, interruption: 10, nonInteraction: 6 },
+                after: { interaction: 15, participation: 18, hardWork: 18, sleep: 2, interruption: 1, nonInteraction: 12 }
+            },
+            {
+                name: "مرزوق بن خالد ابن مرزوق السيف",
+                before: { interaction: 5, participation: 4, hardWork: 3, sleep: 12, interruption: 3, nonInteraction: 5 },
+                after: { interaction: 15, participation: 12, hardWork: 12, sleep: 4, interruption: 0, nonInteraction: 11 }
+            },
+            {
+                name: "برزان بن نايف بن دعسان الشمري",
+                before: { interaction: 4, participation: 1, hardWork: 3, sleep: 1, interruption: 5, nonInteraction: 4 },
+                after: { interaction: 11, participation: 13, hardWork: 14, sleep: 0, interruption: 0, nonInteraction: 12 }
+            },
+            {
+                name: "حمد بن سعد بن عبدالله الخالدي",
+                before: { interaction: 5, participation: 2, hardWork: 3, sleep: 2, interruption: 9, nonInteraction: 5 },
+                after: { interaction: 12, participation: 14, hardWork: 15, sleep: 0, interruption: 1, nonInteraction: 11 }
+            },
+            {
+                name: "سليمان بن عبدالله بن علي اليامي",
+                before: { interaction: 4, participation: 5, hardWork: 3, sleep: 3, interruption: 11, nonInteraction: 6 },
+                after: { interaction: 14, participation: 15, hardWork: 15, sleep: 0, interruption: 2, nonInteraction: 12 }
+            },
+            {
+                name: "عبدالعزيز بن علي بن عبدالله العماري",
+                before: { interaction: 2, participation: 5, hardWork: 4, sleep: 1, interruption: 8, nonInteraction: 5 },
+                after: { interaction: 12, participation: 15, hardWork: 16, sleep: 0, interruption: 0, nonInteraction: 11 }
+            },
+            {
+                name: "منيف بن خالد بن منيف الشهراني",
+                before: { interaction: 2, participation: 4, hardWork: 4, sleep: 2, interruption: 14, nonInteraction: 5 },
+                after: { interaction: 19, participation: 11, hardWork: 17, sleep: 0, interruption: 2, nonInteraction: 10 }
+            },
+            {
+                name: "أحمد بن علي بن دغيم السوقي الشمري",
+                before: { interaction: 4, participation: 1, hardWork: 3, sleep: 2, interruption: 14, nonInteraction: 4 },
+                after: { interaction: 11, participation: 10, hardWork: 15, sleep: 0, interruption: 2, nonInteraction: 10 }
+            },
+            {
+                name: "حمد بن عمر بن محمد العجلاني",
+                before: { interaction: 5, participation: 2, hardWork: 4, sleep: 2, interruption: 9, nonInteraction: 5 },
+                after: { interaction: 10, participation: 10, hardWork: 12, sleep: 0, interruption: 1, nonInteraction: 10 }
+            },
+            {
+                name: "راكان بن هادي بن مدلول الشمري",
+                before: { interaction: 2, participation: 1, hardWork: 3, sleep: 2, interruption: 8, nonInteraction: 6 },
+                after: { interaction: 9, participation: 14, hardWork: 14, sleep: 0, interruption: 1, nonInteraction: 12 }
+            },
+            {
+                name: "ضاري بن ناصر بن خليف الشمري",
+                before: { interaction: 4, participation: 2, hardWork: 4, sleep: 8, interruption: 9, nonInteraction: 5 },
+                after: { interaction: 8, participation: 15, hardWork: 15, sleep: 2, interruption: 1, nonInteraction: 11 }
+            },
+            {
+                name: "علي بن حامد بن علي الشبيبه الرويلي",
+                before: { interaction: 5, participation: 5, hardWork: 3, sleep: 2, interruption: 11, nonInteraction: 4 },
+                after: { interaction: 10, participation: 17, hardWork: 11, sleep: 0, interruption: 2, nonInteraction: 11 }
+            },
+            {
+                name: "تركي بن احمد بن حسين العلي",
+                before: { interaction: 4, participation: 4, hardWork: 4, sleep: 2, interruption: 3, nonInteraction: 8 },
+                after: { interaction: 8, participation: 18, hardWork: 11, sleep: 0, interruption: 0, nonInteraction: 11 }
+            },
+            {
+                name: "سامي بن سيف بن دوخي الاسلمي الشمري",
+                before: { interaction: 2, participation: 2, hardWork: 3, sleep: 5, interruption: 4, nonInteraction: 6 },
+                after: { interaction: 9, participation: 19, hardWork: 11, sleep: 1, interruption: 0, nonInteraction: 10 }
+            },
+            {
+                name: "نواف بن خليل بن ابراهيم الصعب",
+                before: { interaction: 1, participation: 1, hardWork: 4, sleep: 3, interruption: 10, nonInteraction: 5 },
+                after: { interaction: 14, participation: 14, hardWork: 14, sleep: 0, interruption: 3, nonInteraction: 12 }
+            },
+            {
+                name: "عبدالإله بن هادي بن مهدي آل فطيح",
+                before: { interaction: 2, participation: 2, hardWork: 3, sleep: 5, interruption: 12, nonInteraction: 2 },
+                after: { interaction: 10, participation: 15, hardWork: 15, sleep: 2, interruption: 3, nonInteraction: 12 }
+            },
+            {
+                name: "عبدالرحمن بن مناحي بن علي السهمي الشمراني",
+                before: { interaction: 5, participation: 2, hardWork: 4, sleep: 8, interruption: 14, nonInteraction: 5 },
+                after: { interaction: 10, participation: 12, hardWork: 11, sleep: 2, interruption: 3, nonInteraction: 10 }
+            },
+            {
+                name: "عبدالمحسن بن حمود بن فارع العتيبي",
+                before: { interaction: 4, participation: 2, hardWork: 3, sleep: 1, interruption: 11, nonInteraction: 6 },
+                after: { interaction: 9, participation: 13, hardWork: 11, sleep: 0, interruption: 3, nonInteraction: 12 }
+            },
+            {
+                name: "مشرف بن صفوق بن محسن الشمري",
+                before: { interaction: 5, participation: 2, hardWork: 2, sleep: 4, interruption: 8, nonInteraction: 5 },
+                after: { interaction: 9, participation: 11, hardWork: 12, sleep: 1, interruption: 0, nonInteraction: 12 }
+            },
+            {
+                name: "عايد بن عبدالله بن عايد الشمري",
+                before: { interaction: 6, participation: 2, hardWork: 5, sleep: 2, interruption: 7, nonInteraction: 5 },
+                after: { interaction: 10, participation: 11, hardWork: 12, sleep: 0, interruption: 2, nonInteraction: 12 }
+            },
+            {
+                name: "عبدالإله بن ابراهيم بن بخيت الزهراني",
+                before: { interaction: 5, participation: 4, hardWork: 3, sleep: 3, interruption: 8, nonInteraction: 5 },
+                after: { interaction: 12, participation: 12, hardWork: 12, sleep: 0, interruption: 1, nonInteraction: 11 }
+            },
+            {
+                name: "عبدالله بن خالد بن عايض العبيدي",
+                before: { interaction: 5, participation: 5, hardWork: 4, sleep: 9, interruption: 9, nonInteraction: 5 },
+                after: { interaction: 8, participation: 11, hardWork: 11, sleep: 4, interruption: 2, nonInteraction: 11 }
+            },
+            {
+                name: "مهند انس عبدالهادي ابولبده",
+                before: { interaction: 6, participation: 4, hardWork: 5, sleep: 3, interruption: 14, nonInteraction: 5 },
+                after: { interaction: 15, participation: 18, hardWork: 14, sleep: 0, interruption: 3, nonInteraction: 10 }
+            }
         ];
 
         // بيانات المعلمين من ملف Excel المرفق
